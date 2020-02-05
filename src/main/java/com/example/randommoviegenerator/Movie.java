@@ -35,6 +35,6 @@ public class Movie {
     }
 
     public String toString() {
-        return "Beer{id=" + this.id + ", name='" + this.name + '\'' + '}';
+        return "Movie{id=" + this.id + ", name='" + this.name + '\'' + '}';
     }
 }

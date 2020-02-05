@@ -9,7 +9,7 @@ function App () {
     const [selectedMoviePlot, setSelectedMoviePlot] = useState("");
 
     useEffect(() => {
-        fetch('/api/movies')
+        fetch('/api/movie')
             .then(response => response.json())
             .then(data => setMovie({data}));
     },[]);
@@ -17,9 +17,12 @@ function App () {
 
     function handleClick() {
         const mov = movie.data[Math.floor(Math.random()*movie.data.length)];
+        console.log(mov)
         setSelectedMovie(mov)
-        fetch("http://omdbapi.com/?apikey=853fb793&plot=full&t=" + mov.name).then(response => response.json())
-            .then(response => setSelectedMoviePlot(response.Plot))
+        if(typeof mov !== "undefined") {
+            fetch("http://omdbapi.com/?apikey=853fb793&plot=full&t=" + mov.name).then(response => response.json())
+                .then(response => setSelectedMoviePlot(response.Plot))
+        }
     }
 
 
